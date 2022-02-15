@@ -26,7 +26,7 @@ console.log ("Olá ", nome,  "você tem: " , idade, "anos")
 
 /* enviei e sumiu do GiHub, ou eu o perdi....Vou mandar novamente*/
 
-let corDaRopua = prompt("Você está usando roupa azul hoje?")
+ let corDaRopua = prompt("Você está usando roupa azul hoje?")
 let diaDaSemana = prompt("Hoje é 2a feira?")
 let gostaAnimais = prompt("Você gosta de animais?")
 
@@ -38,3 +38,4 @@ let c = b
 a = c 
 console.log ("a= ", a,  "b= " , b)
 
+/* deu certo! */
