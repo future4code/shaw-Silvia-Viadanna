@@ -24,3 +24,5 @@ console.log(typeof idade)
 
 console.log ("Olá ", nome,  "você tem: " , idade, "anos")
 
+/* enviei e sumiu do GiHub, ou eu o perdi....Vou mandar novamente*/
+
