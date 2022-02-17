@@ -38,4 +38,4 @@ let c = b
 a = c 
 console.log ("a= ", a,  "b= " , b)
 
-/* deu certo! */
+/* deu certo!   */
