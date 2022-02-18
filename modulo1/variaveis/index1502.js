@@ -1,4 +1,3 @@
-// OPERADORES
 // Exercícios de interpretação de código //
 //  1o
 // console.log("a. ", resultado)//  
@@ -13,14 +12,8 @@
 // 2o
 //Será impresso a concatenação dos números
 
-
-//3o  Inserir Number no prompt,transformando a entrada em número
-  const primeiroNumero = Number( prompt("Digite um numero!"))
-  const segundoNumero = Number(prompt("Digite outro numero!"))
-
-  let resultado = primeiroNumero + segundoNumero
-
-  console.log(resultado)
+//3o
+//  Inverter o Let com Const
 
 // Exercícios de escrita de código
 // 1o
@@ -46,12 +39,13 @@ const suaIdade = prompt(" Quantos anos você tem:")
  //4o
 
 
- const primeiroNr = Number(prompt(" Digite um número:"))
- const segundoNr = Number(prompt(" Digite outro número:"))
+const primeiroNr = Number(prompt(" Digite um número:"))
+const segundoNr = Number(prompt(" Digite outro número:"))
  console.log("O primeiro numero é maior que segundo?", primeiroNr>segundoNr) 
  console.log("O primeiro numero é igual ao segundo?", primeiroNr === segundoNr) 
- const resultadoa=primeiroNr%segundoNr
- console.log("O primeiro numero é divisível pelo segundo?", !resultadoa>0) 
- const resultadob=segundoNr%primeiroNr
- console.log("O segundo numero é divisível pelo primeiro?", !resultadob>0) 
+ const resultado=primeiroNr%segundoNr
+ console.log("O primeiro numero é divisível pelo segundo?", !resultado>0) 
+ const resultadoa=segundoNr%primeiroNr
+ console.log("O segundo numero é divisível pelo primeiro?", !resultadoa>0) 
+
 
