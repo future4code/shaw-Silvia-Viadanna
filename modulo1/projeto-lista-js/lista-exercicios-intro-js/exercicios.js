@@ -152,8 +152,7 @@ return condicao
 
 // EXERCÍCIO 13
 function checaRenovacaoRG() {
-  
-   anoAtual = Number(prompt(" Em que ano estamos? "))
+     anoAtual = Number(prompt(" Em que ano estamos? "))
   anoNasc = Number(prompt(" Em que ano você nasceu? "))
    anoEmiss = Number(prompt(" Qual ano de emissão? "))
  
