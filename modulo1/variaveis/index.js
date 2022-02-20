@@ -37,3 +37,8 @@ let c = b
  b = a
 a = c 
 console.log ("a= ", a,  "b= " , b)
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ca88e61ce84eff724621078723c5d7d788d4ecd8
