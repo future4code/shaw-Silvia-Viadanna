@@ -13,6 +13,7 @@
 // 2o
 //Será impresso a concatenação dos números
 
+
 //3o  Inserir Number no prompt,transformando a entrada em número
   const primeiroNumero = Number( prompt("Digite um numero!"))
   const segundoNumero = Number(prompt("Digite outro numero!"))
@@ -49,9 +50,3 @@ const suaIdade = prompt(" Quantos anos você tem:")
  const segundoNr = Number(prompt(" Digite outro número:"))
  console.log("O primeiro numero é maior que segundo?", primeiroNr>segundoNr) 
  console.log("O primeiro numero é igual ao segundo?", primeiroNr === segundoNr) 
- const resultadoa=primeiroNr%segundoNr
- console.log("O primeiro numero é divisível pelo segundo?", !resultadoa>0) 
- const resultadob=segundoNr%primeiroNr
- console.log("O segundo numero é divisível pelo primeiro?", !resultadob>0) 
-
-
