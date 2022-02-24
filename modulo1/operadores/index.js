@@ -1,40 +1,7 @@
 // OPERADORES
 // Exercícios de interpretação de código //
 //  1o
-<<<<<<< HEAD
- // console.log("a. ", resultado)//  
- //a. false
- // console.log("b. ", resultado) //
- //b. false
- // console.log("c. ", resultado)//
- //c.  true
- // console.log("d. ", typeof resultado)//
- //d. undefinied
 
- // 2o
- //Será impresso a concatenação dos números
-
- //3o  Inserir Number no prompt,transformando a entrada em número //
-  const primeiroNumero = Number(prompt("Digite um numero:"))
-  const segundoNumero = Number(prompt("Digite outro numero:"))
-=======
-// console.log("a. ", resultado)//  
-//a. false
-// console.log("b. ", resultado) //
-//b. false
-// console.log("c. ", resultado)//
-//c.  true
-// console.log("d. ", typeof resultado)//
-//d. undefinied
-
-// 2o
-//Será impresso a concatenação dos números
-
-
-//3o  Inserir Number no prompt,transformando a entrada em número
-  const primeiroNumero = Number( prompt("Digite um numero!"))
-  const segundoNumero = Number(prompt("Digite outro numero!"))
->>>>>>> ca88e61ce84eff724621078723c5d7d788d4ecd8
 
   let resultado = primeiroNumero + segundoNumero
 
@@ -68,19 +35,5 @@ const suaIdade = prompt(" Quantos anos você tem:")
  const segundoNr = Number(prompt(" Digite outro número:"))
  console.log("O primeiro numero é maior que segundo?", primeiroNr>segundoNr) 
  console.log("O primeiro numero é igual ao segundo?", primeiroNr === segundoNr) 
-<<<<<<< HEAD
- const resultadoa=primeiroNr%segundoNr
- console.log("O primeiro numero é divisível pelo segundo?", !resultadoa>0) 
- const resultadob=segundoNr%primeiroNr
- console.log("O segundo numero é divisível pelo primeiro?", !resultadob>0) 
 
 
- 
-=======
- const resultadob=primeiroNr%segundoNr
- console.log("O primeiro numero é divisível pelo segundo?", !resultadob>0) 
- const resultadoa=segundoNr%primeiroNr
- console.log("O segundo numero é divisível pelo primeiro?", !resultadoa>0) 
-
-
->>>>>>> ca88e61ce84eff724621078723c5d7d788d4ecd8
