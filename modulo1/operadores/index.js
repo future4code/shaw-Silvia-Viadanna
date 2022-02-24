@@ -1,22 +1,7 @@
 // OPERADORES
 // Exercícios de interpretação de código //
 //  1o
-// console.log("a. ", resultado)//  
-//a. false
-// console.log("b. ", resultado) //
-//b. false
-// console.log("c. ", resultado)//
-//c.  true
-// console.log("d. ", typeof resultado)//
-//d. undefinied
 
-// 2o
-//Será impresso a concatenação dos números
-
-
-//3o  Inserir Number no prompt,transformando a entrada em número
-  const primeiroNumero = Number( prompt("Digite um numero!"))
-  const segundoNumero = Number(prompt("Digite outro numero!"))
 
   let resultado = primeiroNumero + segundoNumero
 
@@ -50,3 +35,5 @@ const suaIdade = prompt(" Quantos anos você tem:")
  const segundoNr = Number(prompt(" Digite outro número:"))
  console.log("O primeiro numero é maior que segundo?", primeiroNr>segundoNr) 
  console.log("O primeiro numero é igual ao segundo?", primeiroNr === segundoNr) 
+
+
