@@ -46,6 +46,7 @@ const suaIdade = prompt(" Quantos anos você tem:")
  //4o
 
 
+ 
  const primeiroNr = Number(prompt(" Digite um número:"))
  const segundoNr = Number(prompt(" Digite outro número:"))
  console.log("O primeiro numero é maior que segundo?", primeiroNr>segundoNr) 
