@@ -1,22 +1,7 @@
 // OPERADORES
 // Exercícios de interpretação de código //
 //  1o
-// console.log("a. ", resultado)//  
-//a. false
-// console.log("b. ", resultado) //
-//b. false
-// console.log("c. ", resultado)//
-//c.  true
-// console.log("d. ", typeof resultado)//
-//d. undefinied
 
-// 2o
-//Será impresso a concatenação dos números
-
-
-//3o  Inserir Number no prompt,transformando a entrada em número
-  const primeiroNumero = Number( prompt("Digite um numero!"))
-  const segundoNumero = Number(prompt("Digite outro numero!"))
 
   let resultado = primeiroNumero + segundoNumero
 
@@ -54,4 +39,5 @@ const suaIdade = prompt(" Quantos anos você tem:")
  console.log("O primeiro numero é divisível pelo segundo?", !resultadoa>0) 
  const resultadob=segundoNr%primeiroNr
  console.log("O segundo numero é divisível pelo primeiro?", !resultadob>0) 
+
 
