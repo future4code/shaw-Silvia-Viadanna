@@ -62,4 +62,5 @@ if(somaUsuario<=21 && somaPc <somaUsuario ||(somaPc>21)) {
          } else {
             console.log("O jogo acabou")
          }
+         
          console.log("O jogo acabou")

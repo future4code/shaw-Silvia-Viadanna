@@ -12,31 +12,31 @@
  */
 // O JOGO SIMPLIFICADO
 
-//     console.log("Boas vindas ao jogo de Blackjack!")
+    console.log("Boas vindas ao jogo de Blackjack!")
 
-//     if(confirm("Quer iniciar uma nova rodada?")) {
-//       let cartaUsuario1 = comprarCarta();
-//       let cartaUsuario2 = comprarCarta();
+    if(confirm("Quer iniciar uma nova rodada?")) {
+      let cartaUsuario1 = comprarCarta();
+      let cartaUsuario2 = comprarCarta();
           
-//     somaUsuario=cartaUsuario1.valor + cartaUsuario2.valor
-// console.log("Usuario - cartas: ", cartaUsuario1.texto , cartaUsuario2.texto , " - pontuação: " , somaUsuario)
+    somaUsuario=cartaUsuario1.valor + cartaUsuario2.valor
+console.log("Usuario - cartas: ", cartaUsuario1.texto , cartaUsuario2.texto , " - pontuação: " , somaUsuario)
 
-//       let cartaPc1 = comprarCarta();
-//       let cartaPc2 = comprarCarta();
+      let cartaPc1 = comprarCarta();
+      let cartaPc2 = comprarCarta();
           
-//     somaPc=cartaPc1.valor + cartaPc2.valor
-// console.log("Computador - cartas: ", cartaPc1.texto , cartaPc2.texto , " - pontuação: " , somaPc)
+    somaPc=cartaPc1.valor + cartaPc2.valor
+console.log("Computador - cartas: ", cartaPc1.texto , cartaPc2.texto , " - pontuação: " , somaPc)
 
-// if(somaUsuario>somaPc) {
-//    console.log("O usuário ganhou!")
-// } else if(somaUsuario<somaPc) {    console.log("O Computador ganhou!")
-// }
-// else {
-//    console.log("Empate")
-// }
-//          } else {
-//             console.log ("O jogo acabou")
-//          }
+if(somaUsuario>somaPc) {
+   console.log("O usuário ganhou!")
+} else if(somaUsuario<somaPc) {    console.log("O Computador ganhou!")
+}
+else {
+   console.log("Empate")
+}
+         } else {
+            console.log ("O jogo acabou")
+         }
 
    
 
