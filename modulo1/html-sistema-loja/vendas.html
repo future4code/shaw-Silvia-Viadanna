@@ -14,7 +14,6 @@
         background-color:antiquewhite;
     }
     body { 
-        background-image: url("../img/fundo.jpg");
         background-color: beige; 
         align-content: center;
         align-self: center;
@@ -42,50 +41,35 @@
         <h1><img src="../img/logo.png" alt="Companhia da Moda"></h1>
         <h4>Sinta o conforto de se vestir bem!</h4>
     </header>
-        <table><tr><td>
+    <table><tr><td>
         <a href="index.html">Página Inicial</a></td><td>
         <a href="ctrl-estoque.html">Controle de Estoque</a></td><td>
         <a href="add-produto.html">Adicionar Produto</a></td><td>
         <a href="funcionarios.html">Funcionários</a></td><td>
-        <a href="vendas.html">Vendas</a></td><td>
+            <a href="vendas.html">Vendas</a></td><td>
         <a href="historicovendas.html">Histórico de Vendas</a>
     </td></tr></table> 
-
-     
     
-    <div>
-        <img src="../img/short.jpg" width="100" alt="Shorts"/>
-        <img src="../img/biquini.jpg" width="100" alt="Biquini"/>
-        <img src="../img/vestido.jpg" width="100" alt="Vestido"/>
-        <img src="../img/camiseta.jpg" width="100" alt="Camisetas"/>
-        <img src="../img/calca.jpg" width="100" alt="Calças"/>
-    </div>
-<p>
+    <h2>Adicionar Produto ao CARRINHO</h2>
+<form method="" action="">
+<select name="tipo"  size="5" multiple>
+<option value="biquini">Biquini</option>
+<option value="calca">Calça</option>
+<option value="camiseta">Camiseta</option>
+<option value="short">Short</option>
+<option value="vestido">Vestido</option>
 
-</p>
-    <div>
-        <b>Entre em contato:</b>
-       
-
-        <div>
-            <img src="../img/fone.png" width="40" alt="Telefone" />
-            <img src="../img/whatsapp.jpg" width="30" alt="Whatsapp" />
-            <img src="../img/email.png" width="40" alt="Email"/>
-        </div>
-    </div>
-
-<p></p>
-
-    <div>
-        <b>Siga-nos nas redes sociais!</b>
-
-        <div>
-            <img src="../img/instagram.jpg" width="20" alt="Instagram" />
-            <img src="../img/twiter.jpg" width="30" alt="Twiter" />
-            <img src="../img/facebook.png" width="20" alt="Facebook"/>
-        </div>
-    </div>
-
+</select>
+<select name="formapagto" size="2">
+    <option value="cartao">Cartão</option>
+    <option value="dindin">Dinheiro</option>
+    <option value="pix">Pix</option>
+    
+    
+    </select>
+<input type="submit" value="Comprar" />
+<input type="reset" value="Cancelar" />
+</form>
     <footer>
         <em>Todos os direitos reservados</em>
       </footer>
