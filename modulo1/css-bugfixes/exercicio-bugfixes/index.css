@@ -7,7 +7,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto';
 }
 
 h2 {
@@ -24,12 +23,7 @@ input {
 
 button:focus {
     color: white;
-    
-    }
-button.hover{
-    background: #072440;
 }
-
 
 img {
     width: 100px;
@@ -40,7 +34,7 @@ div>p:first-child {
 }
 
 div img {
-    background:white;
+    background: black;
 }
 
 .botao-amarelo {
@@ -57,7 +51,7 @@ div img {
 }
 
 .container {
-    height: 400px;
+    height: 500px;
     text-align: center;
 }
 
@@ -65,12 +59,6 @@ div img {
     height: 15px;
 }
 
-.icone:active{
-    opacity:0.5;
-}
-.icone:hover{
-    opacity:1;
-}
 
 /** 
   *
@@ -110,9 +98,7 @@ div:last-child {
 }
 
 table {
-    width: 100%;
-    text-align: center;
-    
+    width: 60%;
 }
 
 td button {
@@ -120,7 +106,7 @@ td button {
     width: 150px;
     height: 30px;
     border-radius: 5px;
-    color:firebrick;
+    color: black;
 }
 
 .container-do-search {
