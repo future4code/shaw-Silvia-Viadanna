@@ -34,7 +34,7 @@ div>p:first-child {
 }
 
 div img {
-    background: black;
+    background:white;
 }
 
 .botao-amarelo {
@@ -108,7 +108,7 @@ td button {
     width: 150px;
     height: 30px;
     border-radius: 5px;
-    color: black;
+    
 }
 
 .container-do-search {
