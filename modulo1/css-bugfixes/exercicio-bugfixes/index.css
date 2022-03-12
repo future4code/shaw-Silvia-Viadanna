@@ -25,6 +25,11 @@ button:focus {
     color: white;
 }
 
+button.hover{
+    background: #072440;
+}
+
+
 img {
     width: 100px;
 }
@@ -44,6 +49,8 @@ div img {
     border-radius: 5px;
     font-size: 20px;
     color: white;
+    
+    
 }
 
 .botao-amarelo:hover {
@@ -108,9 +115,9 @@ td button {
     width: 150px;
     height: 30px;
     border-radius: 5px;
-    
-}
+   }
 
+ 
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -134,5 +141,5 @@ img {
 }
 
 #back-button:hover {
-    background-color: #635a3d
+    background-color: #635a3d;
 }
