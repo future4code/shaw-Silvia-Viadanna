@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-
   const titulo = "Título do vídeo"
 
   function reproduzVideo() {
