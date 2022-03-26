@@ -1,36 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 
-
-const DivPai = styled.div`
-  // display: flex;
-  // justify-content: center;
-  // flex-direction: column;
-  // align-items: center;
-  `
-
-  const Estilizacao=styled.div`
-  // display: flex;
-  // justify-content: center;
-  // flex-direction: column;
-  // align-items: center;
-  `
-
-  const EstiloMain=styled.main`
-  // display: flex;
-  // justify-content: center;
-  // flex-direction: column;
-  // align-items: center;
-  `
 
  
     class App extends React.Component {
-
       state = {
         pessoas: [
           {
             nome: "",
-            mensagem: "",
+            mensagem: ""
           }
         ],
 
@@ -41,8 +18,8 @@ const DivPai = styled.div`
        adicionaPessoa = () => {
 
         const novaPessoa = {
-          nome: this.state.valorInputPessoa,
-          mensagem: this.state.valorInputEmail
+          nome: this.state.valorInputNome,
+          mensagem: this.state.valorInputMensagem
         };
 
         const novoPessoas = [...this.state.pessoas, novaPessoa];
@@ -62,24 +39,27 @@ const DivPai = styled.div`
   onChangeInputMensagem = (event) => {
     this.setState({ valorInputMensagem: event.target.value });
   };
-
+  
   render() {
 
   const listaDeComponentes = this.state.pessoas.map((pessoa) => {
     return (
       <p>
         {pessoa.nome} - {pessoa.mensagem}
+
+        
       </p>
 );
 });
+
+console.log(listaDeComponentes)
 return (
-  <DivPai>
-    <Estilizacao>
 
+<div>
 
- <EstiloMain>
+<h1>WHATSLAB</h1>
 
-      <input
+    <input
         value={this.state.valorInputNome}
         onChange={this.onChangeInputNome}
         placeholder={"Nome"}
@@ -91,10 +71,9 @@ return (
       />
       <button onClick={this.adicionaPessoa}>ENVIAR</button>
     
-    </EstiloMain>
-    <div>{listaDeComponentes}</div>
-  </Estilizacao>
-  </DivPai>
+    
+    <b>{listaDeComponentes}</b>
+  </div>
   );
   }
 
