@@ -1,8 +1,17 @@
-import React from "react";
+
+import React from 'react';
+import './App.css';
+
+
+
+
+
 
 class App extends React.Component {
   state = {
     
+
+    listaDeComponentes:"",
     pessoas: [
       {
         nome: "",
@@ -25,7 +34,7 @@ class App extends React.Component {
     };
 
     
-    const novoPessoas = [novaPessoa,...this.state.pessoas];
+    const novoPessoas = [...this.state.pessoas,novaPessoa];
 
    
     this.setState({ pessoas: novoPessoas,
@@ -49,18 +58,30 @@ class App extends React.Component {
 
   render() {
     
+   
     const listaDeComponentes = this.state.pessoas.map((pessoa) => {
       return (
+       
         <p>
-         <strong> {pessoa.nome} : </strong>{pessoa.email}
+         <strong> {pessoa.nome}  </strong>{pessoa.email}
         </p>
+        
       );
     });
 
     return (
+
+
       <div>
+        
+                
         <h1>WhatsLAB</h1>
-        <div>
+        
+        
+       
+          {listaDeComponentes} 
+
+       
           <input 
            size={10}
             value={this.state.valorInputPessoa}
@@ -76,10 +97,11 @@ class App extends React.Component {
             onChange={this.onChangeInputEmail}
             placeholder={"Mensagem"}
           />
+       
           <button  onClick={this.adicionaPessoa}>Enviar</button>
         </div>
-        <div>{listaDeComponentes}</div>
-      </div>
+        
+     
     );
   }
 }
