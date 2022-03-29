@@ -32,7 +32,6 @@ switch(this.state.pagina){
 
 }
 
-
     return (
     <>
     <center>

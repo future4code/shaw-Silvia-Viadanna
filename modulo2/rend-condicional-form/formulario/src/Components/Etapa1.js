@@ -61,6 +61,7 @@ export default class Etapa1 extends React.Component {
           />
 
 
+
           <p>Qual sua Escolaridade?</p>
           <select>
             <option value="EMI">Ensino Medio Incompleto</option>
