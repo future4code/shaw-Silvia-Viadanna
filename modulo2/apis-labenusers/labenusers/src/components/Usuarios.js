@@ -48,24 +48,28 @@ axios
 }
 
 deletarUsuario=(id)=>{
+
+    if (window.confirm("Tem certeza que deseja apagar o usuário?")) {
     const url=`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
+    
     axios
     .delete(url,headers)
-
-
+ 
 .then((res) =>{
+    
     alert("Usuário(a) removido!")
     this.mostrarUsuarios()
 }
 )
-
+    
 .catch((err) => {
     // console.log(err.response.data)
     alert("Não foi possível remover!")
 
 })
-}
 
+}
+}
 
     render() {
         const listaUsuarios=this.state.usuarios.map((user) =>{
