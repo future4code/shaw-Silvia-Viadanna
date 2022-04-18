@@ -50,13 +50,12 @@ const Post = (props) => {
 
     const listaDeComentarios = [...comentarios, comentario]
 
-    // numeroComentarios({
-    //   comentarios: setComentarios,
-    //   comentando: setComentando
-    //   numeroComentarios:setNumeroComentarios
-    // })
+    setComentarios({  comentarios: listaDeComentarios})
+      setComentando({   comentando: false})
+      setNumeroComentarios({ numeroComentarios: numeroComentarios + 1
+    })
   }
-  const iconeCurtida = curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)
+  const iconeCurtida=(props) => {curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)}
 
 
   return (
@@ -82,7 +81,7 @@ const Post = (props) => {
         valorContador={numeroComentarios}
         />
       </PostFooter>
-      { {caixaDeComentario}}
+       {caixaDeComentario}
     </PostContainer>
   )
 }
