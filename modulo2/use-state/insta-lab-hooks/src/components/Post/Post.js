@@ -30,7 +30,7 @@ const Post = (props) => {
 
   const onClickComentario = () => {
     
-      setComentando= !comentando    
+      setComentando(!comentando );  
  
     };
 
@@ -47,15 +47,15 @@ const Post = (props) => {
     )
 
   const enviarComentario = (comentario) => {
+    setNumeroComentarios(numeroComentarios + 1);
 
     const listaDeComentarios = [...comentarios, comentario]
 
-    setComentarios({  comentarios: listaDeComentarios})
-      setComentando({   comentando: false})
-      setNumeroComentarios({ numeroComentarios: numeroComentarios + 1
-    })
+    setComentarios(listaDeComentarios)
+      setComentando(  false)
+    
   }
-  const iconeCurtida=(props) => {curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)}
+  const iconeCurtida=curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)
 
 
   return (
