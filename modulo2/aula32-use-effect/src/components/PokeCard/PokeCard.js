@@ -28,7 +28,7 @@ useEffect(()=> {
       <div>
 
         <p>{pokemon.name}</p>
-        <p>{pokemon.weight} kg</p>
+        <p>{pokemon.weight ? `${pokemon.weight} KG  `: `` } </p>
         {pokemon.types && <p>{pokemon.types[0].type.name}</p>}
         {pokemon.sprites && (
           <img src={pokemon.sprites.front_default} alt={pokemon.name} />
