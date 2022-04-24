@@ -2,42 +2,33 @@ import React, { useEffect,useState} from "react";
 import "./styles.css";
 import axios from "axios";
 import styled from "styled-components";
-import { Match } from "./pages/Match";
 import { Clear } from "./pages/Clear";
+import {Match}  from "./components/Match";
 
-
-// const Container = styled.div `
-//     border: 1px solid gray;
-//     width: 300px;
-//     margin-bottom: 10px;
-//     justify-content: center;
-//     align-items: center;
-//     `
+   
     const Container = styled.div`
-    
-    justify-content: center;
-    border: 1px solid gray;
-    width: 300px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 4px 2px grey;
-  `;
-  const Header = styled.div `
-    height: 40px
-       border: 1px solid gray;
-
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding-left: 10px;
-    justify-content: space-between;
+    heigth:60vh;
+    border: 1px solid gray;
+    justify-content: center;
+    width: 500px;
+    margin: 0 auto;
 
+  `
+  const Header = styled.div `
+  display: flex;
+         justify-content: space-between;
+     
+       
     `
 
 const Card = styled.div`
   display: flex;
-  
-  flex-direction: column;
+   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
 `;
 
 const Img = styled.img`
@@ -46,68 +37,96 @@ const Img = styled.img`
   flex-direction: column;
   align-items: center;
   width: 300px;
+  height: 60vh;
+
 `;
 
-const Botao= styled.button`
-  width: 20%;
-  margin-right: 5px;
-`;
+
 const Footer = styled.div `
-height: 40px;
 display: flex;
-align-items: center;
-padding: 0 10px;
-justify-content: space-between;
- `
-
-export const aluno = "shaw-Silvia-Viadanna";
+width:100%;
+ justify-content: space-between;
+     `
 
 
-function App () {
-const [perfil,setPerfil]=useState({})
+     const Button = styled.button `
+     background-color:red;
+     height: 40px;
 
-useEffect(()=>{
-  getProfileToChoose()
-},[])
+     `
+const aluno = "shaw-Silvia-Viadanna";
 
-const getProfileToChoose=()=>{
-  axios
-  .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${aluno}/person`)
 
-.then((res) => setPerfil(res.data.profile))
-.catch((err) => console.log(err))
-}
+function App() {
+  const [profile, setProfile] = useState({});
 
-const postChoosePerson=(id,boolean)=> {
-const body={id:id,choise:boolean}
-  axios
-.post(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${aluno}/choose-person`,body)
-.then(()=>getProfileToChoose)
-.catch((err)=>console.log(err.response))
-}
 
-return(
-  <Container>
-    <Header> Astro Match
-<Botao onClick={(Match)}>Ver Matches</Botao>
+  useEffect(() => {
+    getProfileToChoose();
+  }, []);
 
-    </Header>
-  <Card>
-  {console.log(perfil)}
-  <Img src={perfil.photo}/>
-  <p>eu sou {perfil.name},tenho {perfil.age} anos!</p>
-  <p>...{perfil.bio}</p>
-  
-  <Footer>
-    
-    <Match key={perfil.id} onClick={() =>postChoosePerson(perfil.id,true)}>S2</Match>
-    <button onClick={() =>postChoosePerson(perfil.id,false)}> X </button>
-    <Clear> Limpar Matches</Clear>
-    </Footer>
-    </Card>
-</Container>
- 
-)
+  const getProfileToChoose = () => {
+    axios
+      .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${aluno}/person`)
+
+      .then((res) => setProfile(res.data.profile))
+      .catch((err) => console.log(err));
+  };
+
+  const postChoosePerson = (id, boolean) => {
+
+    const body = {
+      id: id,
+      choise: boolean
+    };
+    axios
+
+      .post(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${aluno}/choose-person`, body)
+
+      .then((response) => {
+        getProfileToChoose();
+        console.log("res=====", profile.id, boolean);
+      })
+
+      .catch((err) => console.log(err.response));
+  };
+
+
+
+
+  return (
+
+
+
+
+
+    <Container>
+      <Header> <h2>Astro Match</h2><p></p>
+        <p> <Button onClick={Match}>➤❤</Button></p>
+      </Header>
+      <Card>
+        {console.log(profile)}
+        <Img src={profile.photo} />
+        <p>eu sou {profile.name},tenho {profile.age} anos!</p>
+        <p>...{profile.bio}</p>
+      </Card>
+      <Footer>
+
+
+        <Button onClick={() => postChoosePerson(profile.id, false)}> ✘ </Button>
+        <Button onClick={() => postChoosePerson(profile.id, true)}>❤</Button>
+        <Button onClick={Clear}>Limpar ❤</Button>
+
+      </Footer>
+      <div>
+
+        
+      </div>
+
+    </Container>
+
+
+  );
 }
 
 export default App;

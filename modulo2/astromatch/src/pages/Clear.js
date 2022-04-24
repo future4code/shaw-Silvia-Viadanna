@@ -3,28 +3,29 @@ import axios from "axios";
 
 const aluno = "shaw-Silvia-Viadanna";
 
-const Clear=()=>{
-    const [matchs,setMatchs]= useState("")
+function Clear() {
+    const [matchs, setMatchs] = useState("");
 
-useEffect(()=>{
-putMatches()
-}, [matchs])
+    useEffect(() => {
+        putMatches();
+    }, [matchs]);
 
-const putMatches=() => {
+    const putMatches = () => {
 
-    axios
-    .put(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${aluno}/clear`)
-    .then ((res)=>{setMatchs(res.data.matchs)})
-    .catch((err)=>{ console.log(err.response.data)
-    })
-}
+        axios
+            .put(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${aluno}/clear`)
+            .then((res) => { setMatchs(res.data.matchs); })
+            .catch((err) => {
+                console.log(err.response.data);
+            });
+    };
 
-return (
-<div>
-  
-    
-</div>
-)
+    return (
+        <div>
+
+
+        </div>
+    );
 
 
 

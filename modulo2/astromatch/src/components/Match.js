@@ -1,20 +1,27 @@
 import React, { useEffect,useState} from "react";
 import axios from "axios";
+import styled from "styled-components";
+
 
 const aluno = "shaw-Silvia-Viadanna";
 
 const Match=()=>{
-    const [matchs,setMatchs]= useState([])
+    
+    const [matches,setMatches]= useState([])
 
 useEffect(()=>{
 getMatches()
-}, [matchs])
+}, [matches])
 
-const getMatches=(props) => {
+
+
+const getMatches=() => {
 
     axios
     .get(`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:${aluno}/person`)
-    .then ((res)=>{setMatchs(res.data.matchs)})
+    .then ((res)=>{setMatches(res.data.matches)
+        console.log(res.data.matches)}
+    )
     .catch((err)=>{ console.log(err.response.data)
     })
 }
@@ -22,9 +29,10 @@ const getMatches=(props) => {
 return (
 <div>
 
-
-    <img src={matchs.photo} alt={matchs.name}/>
-<p>{matchs.name}</p>
+{console.log(matches)}
+  <img src={matches.photo}/> {matches.name}
+ 
+  
 </div>
 )
 
