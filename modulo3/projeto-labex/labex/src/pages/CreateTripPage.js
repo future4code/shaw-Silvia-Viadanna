@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Body=styled.body`  
     color: #000;
@@ -61,7 +62,12 @@ const Select = styled.select`
     padding: 5px;
     width:400px;
 `;
-const CreateTripPage = () => {
+export const CreateTripPage = () => {
+  const navigate=useNavigate()
+
+  const goToHomePage=()=>{
+    navigate(-1)
+      }
   
   
     return (
@@ -83,11 +89,11 @@ const CreateTripPage = () => {
        <Input placeholder="Descrição da Viagem"></Input><p></p>
        <Input placeholder="Duração em Dias"></Input><p></p>
       
-       <Botao>Voltar</Botao>
+       <Botao onClick={goToHomePage}>Voltar</Botao>
+
        <Botao>CRIAR</Botao> 
       </Body>
     );
   };
   
-  export default CreateTripPage;
   

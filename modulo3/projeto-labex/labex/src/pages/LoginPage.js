@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 const Body=styled.body`  
     color: #000;
     font-family: Arial, Serif;
@@ -61,8 +63,17 @@ const Select = styled.select`
     width:400px;
 `;
 
-const LoginPage = () => {
+export const LoginPage = () => {
+  const navigate=useNavigate()
+
+  const goToHomePage=()=>{
+    navigate(-1)
+      }
   
+      // enquanto não crio login
+      const goToLogin=()=>{
+        navigate("/paginaAdmin")
+          }
   return (
   <Body>
   <Container>
@@ -72,10 +83,10 @@ const LoginPage = () => {
    <Input placeholder="e-mail"></Input><p></p>
    <Input type="password" placeholder="Senha"></Input><p></p>
   
-   <Botao>Voltar</Botao>
-   <Botao>ENTRAR</Botao> 
+   <Botao onClick={goToHomePage}>Voltar</Botao>
+
+   <Botao onClick={goToLogin}>Entrar</Botao>
   </Body>
     );
 }
   
-  export default LoginPage

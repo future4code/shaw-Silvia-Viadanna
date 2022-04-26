@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 const Body=styled.body`  
     color: #000;
     font-family: Arial, Serif;
@@ -44,7 +46,7 @@ const Botao = styled.button`
     padding: 5px;
     color:white;
 `;
-const ListaViagens=styled.div`
+const BotaoListaViagens=styled.button`
   display:flex;
   border: 0px solid ;
   border-radius: 10px;
@@ -58,30 +60,43 @@ const ListaViagens=styled.div`
       background-color: #dffda7;
   }
 `
-const AdminHomePage = () => {
-  
-  
+export const AdminHomePage = () => {
+  const navigate=useNavigate()
+
+  const goToHomePage=()=>{
+    navigate(-1)
+      }
+      const goToCreateTripPage=()=>{
+        navigate("/criarViagem")
+      }
+      const goToTripDetailsPage=()=>{
+        navigate("/criarViagem")
+      }
+      const goToLoginPage=()=>{   
+    navigate("/login")
+      }
     return (
       
       <Body>
       <Container>
        <Header><Title>LabeX </Title> </Header>
          
-           <Botao>Voltar</Botao>
+       <Botao onClick={goToHomePage}>Voltar</Botao>
+
        <Botao>Quero me inscrever!</Botao>
       
        </Container>
        <SubTitle>Painel Administrativo</SubTitle>  
-       <Botao>Voltar</Botao>
-       <Botao>Criar Viagem!</Botao> 
-       <Botao>Logout</Botao>  
- <ListaViagens>Marte <Botao>X</Botao></ListaViagens>
- <ListaViagens>Lua<Botao>X</Botao></ListaViagens>
- <ListaViagens>Via Láctea<Botao>X</Botao></ListaViagens>
+       <Botao onClick={goToHomePage}>Voltar</Botao>
+
+       <Botao onClick={goToCreateTripPage}>Criar Viagem!</Botao> 
+       <Botao onClick={goToLoginPage}>Logout</Botao>  
+ <BotaoListaViagens>Marte <Botao>X</Botao></BotaoListaViagens>
+ <BotaoListaViagens>Lua<Botao>X</Botao></BotaoListaViagens>
+ <BotaoListaViagens>Via Láctea<Botao>X</Botao></BotaoListaViagens>
       </Body>
 
     );
   };
   
-  export default AdminHomePage
   

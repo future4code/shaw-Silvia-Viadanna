@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 const Body=styled.body`  
     color: #000;
     font-family: Arial, Serif;
@@ -46,16 +48,26 @@ const Botao = styled.button`
     color:white;
 `;
 
-const ListTripPage  = () => {
+export const ListTripsPage  = () => {
+  const navigate=useNavigate()
+
   
-  
+
+  const goToHomePage=()=>{
+    navigate(-1)
+      }
+      const goToApplicationFormPage=()=>{
+        navigate("/incricaoViagem")
+          }
+
+
     return (
       <Body>
       <Container>
        <Header><Title>LabeX </Title> </Header>
          
-           <Botao>Voltar</Botao>
-       <Botao>Quero me inscrever!</Botao>
+           <Botao onClick={goToHomePage}>Voltar</Botao>
+       <Botao onClick={goToApplicationFormPage}>Quero me inscrever!</Botao>
       
        </Container>
        <SubTitle>Viagens Disponíveis:</SubTitle>    
@@ -63,4 +75,4 @@ const ListTripPage  = () => {
     )
   };
   
-  export default ListTripPage
+  

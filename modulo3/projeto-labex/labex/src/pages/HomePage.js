@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import {Body,Header,Botao,Container,Title} from "./Style"
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Body=styled.body`  
     color: #000;
@@ -47,21 +48,29 @@ const Botao = styled.button`
 
 
 
-const HomePage  = () => {
+export const HomePage  = () => {
+  const navigate=useNavigate()
 
+  const goToListTripsPage=()=>{
+navigate("/listaViagens")
+  }
+  // const goToAdminHomePage=()=>{    ENQUANTO NÃO SEI FAZER LOGIN
+  //   navigate("/login")
+  //     }
   
+      const goToLogin=()=>{
+        navigate("/paginaAdmin")
+          }
     return (
 
       <Body>
       <Container>
        <Header><Title>LabeX </Title></Header>
-       <Botao>Ver Viagens</Botao>
-       <Botao>Área Administração</Botao>
-       <Botao>Login</Botao>
+       <Botao onClick={goToListTripsPage}>Ver Viagens</Botao>
+       <Botao onClick={goToLogin}>Area Administração</Botao>
        
        </Container>
        </Body>
     );
   };
   
-  export default HomePage

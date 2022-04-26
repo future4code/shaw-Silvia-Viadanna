@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Body=styled.body`  
     color: #000;
@@ -61,7 +62,14 @@ const Select = styled.select`
     padding: 5px;
     width:400px;
 `;
-const ApplicationFormPage = () => {
+export const ApplicationFormPage = () => {
+  const navigate=useNavigate()
+
+  const goToHomePage=()=>{
+    navigate(-1)
+      }
+
+
   
   
     return (
@@ -89,11 +97,11 @@ const ApplicationFormPage = () => {
 
          </Select><p></p>
 <p></p>
-       <Botao>Voltar</Botao>
+                <Botao onClick={goToHomePage}>Voltar</Botao>
+
        <Botao>CONFIRMAR</Botao> 
       </Body>
     );
   };
   
-  export default ApplicationFormPage
   
