@@ -1,0 +1,40 @@
+
+
+.Body{
+    color: #000;
+    font-family: Arial, Serif;
+    font-size: 16px;
+    background-color:#ffffc2;
+    width:100%;
+}
+.Container {
+    display: flex;
+    flex-direction: row;
+    align-items: space-between;
+    margin: 0 auto;
+}
+
+.Title {
+    font-size:  1.5em;
+}
+     
+.Header {
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    flex-direction: row;
+    align-items: center;
+    height: 70px;
+    font-size:30px;
+    color:#288f00;
+}
+.Botao {
+    background: #288f00;
+    border: 0px solid ;
+    border-radius: 20px;
+    align-content: space-between;
+    font-size: 1rem;
+    margin: 1rem;
+    padding: 10px;
+    color:white;
+}
