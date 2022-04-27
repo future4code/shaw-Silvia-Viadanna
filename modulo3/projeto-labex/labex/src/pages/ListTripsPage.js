@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { goBack,goToApplicationFormPage } from "../routes/coordinator";
 
 const Body=styled.body`  
     color: #000;
@@ -48,29 +49,49 @@ const Botao = styled.button`
     color:white;
 `;
 
+const aluno="shaw-Silvia-Viadanna"
 export const ListTripsPage  = () => {
   const navigate=useNavigate()
+  const [listTrip, setListTrip] = useState([]);
+
+
+  useEffect(() => {
+    axios
+      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/:${aluno}/trips`)
+      .then((res) => {
+        setListTrip(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   
+  const listTrips=listTrip.map((list) => {
+return(
+<div key={list.id}>
 
-  const goToHomePage=()=>{
-    navigate(-1)
-      }
-      const goToApplicationFormPage=()=>{
-        navigate("/incricaoViagem")
-          }
+Nome:{list.name}<p></p>
+Descrição:{list.description}<p></p>
+Planeta: {list.planet}<p></p>
+Duração: {list.durationInDays}<p></p>
+Data: {list.date}
+</div>
 
 
+)
+}
+  )
     return (
       <Body>
       <Container>
        <Header><Title>LabeX </Title> </Header>
-         
-           <Botao onClick={goToHomePage}>Voltar</Botao>
-       <Botao onClick={goToApplicationFormPage}>Quero me inscrever!</Botao>
+       <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
+       <Botao onClick={()=>goToApplicationFormPage(navigate)}>Quero me inscrever!</Botao>
       
        </Container>
        <SubTitle>Viagens Disponíveis:</SubTitle>    
+       {listTrips}
       </Body>
     )
   };

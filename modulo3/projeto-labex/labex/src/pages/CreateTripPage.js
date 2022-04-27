@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { goBack } from "../routes/coordinator";
 
 const Body=styled.body`  
     color: #000;
@@ -65,9 +66,7 @@ const Select = styled.select`
 export const CreateTripPage = () => {
   const navigate=useNavigate()
 
-  const goToHomePage=()=>{
-    navigate(-1)
-      }
+  
   
   
     return (
@@ -89,7 +88,7 @@ export const CreateTripPage = () => {
        <Input placeholder="Descrição da Viagem"></Input><p></p>
        <Input placeholder="Duração em Dias"></Input><p></p>
       
-       <Botao onClick={goToHomePage}>Voltar</Botao>
+       <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
        <Botao>CRIAR</Botao> 
       </Body>

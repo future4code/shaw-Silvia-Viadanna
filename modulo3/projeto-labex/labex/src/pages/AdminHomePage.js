@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { goBack,goToCreateTripPage } from "../routes/coordinator";
 
 const Body=styled.body`  
     color: #000;
@@ -62,35 +63,22 @@ const BotaoListaViagens=styled.button`
 `
 export const AdminHomePage = () => {
   const navigate=useNavigate()
-
-  const goToHomePage=()=>{
-    navigate(-1)
-      }
-      const goToCreateTripPage=()=>{
-        navigate("/criarViagem")
-      }
-      const goToTripDetailsPage=()=>{
-        navigate("/criarViagem")
-      }
-      const goToLoginPage=()=>{   
-    navigate("/login")
-      }
+    
     return (
       
       <Body>
       <Container>
        <Header><Title>LabeX </Title> </Header>
          
-       <Botao onClick={goToHomePage}>Voltar</Botao>
-
+       <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
        <Botao>Quero me inscrever!</Botao>
       
        </Container>
        <SubTitle>Painel Administrativo</SubTitle>  
-       <Botao onClick={goToHomePage}>Voltar</Botao>
+       <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
-       <Botao onClick={goToCreateTripPage}>Criar Viagem!</Botao> 
-       <Botao onClick={goToLoginPage}>Logout</Botao>  
+       <Botao onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem!</Botao> 
+       <Botao onClick={()=>goBack(navigate)}>Logout</Botao>  
  <BotaoListaViagens>Marte <Botao>X</Botao></BotaoListaViagens>
  <BotaoListaViagens>Lua<Botao>X</Botao></BotaoListaViagens>
  <BotaoListaViagens>Via Láctea<Botao>X</Botao></BotaoListaViagens>

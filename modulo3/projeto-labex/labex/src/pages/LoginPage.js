@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { goBack,goToLogin } from "../routes/coordinator";
 
 const Body=styled.body`  
     color: #000;
@@ -66,14 +67,9 @@ const Select = styled.select`
 export const LoginPage = () => {
   const navigate=useNavigate()
 
-  const goToHomePage=()=>{
-    navigate(-1)
-      }
+ 
   
-      // enquanto não crio login
-      const goToLogin=()=>{
-        navigate("/paginaAdmin")
-          }
+      
   return (
   <Body>
   <Container>
@@ -83,9 +79,9 @@ export const LoginPage = () => {
    <Input placeholder="e-mail"></Input><p></p>
    <Input type="password" placeholder="Senha"></Input><p></p>
   
-   <Botao onClick={goToHomePage}>Voltar</Botao>
+   <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
-   <Botao onClick={goToLogin}>Entrar</Botao>
+   <Botao onClick={()=>goToLogin(navigate)}>Entrar</Botao>
   </Body>
     );
 }

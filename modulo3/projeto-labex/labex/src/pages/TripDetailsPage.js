@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
+import { goBack } from "../routes/coordinator";
 const Body=styled.body`  
     color: #000;
     font-family: Arial, Serif;
@@ -69,11 +69,7 @@ const Select = styled.select`
 export const TripDetailsPage = () => {
   const navigate=useNavigate()
 
-  const goToHomePage=()=>{
-    navigate(-1)
-      }
-  
-  
+   
     return (
       <Body>
       <Container>
@@ -84,7 +80,7 @@ export const TripDetailsPage = () => {
        Duração: <p></p>
        Data: <p></p>
 
-       <Botao onClick={goToHomePage}>Voltar</Botao>
+       <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
        </Container>
 
        <SubTitle>Candidatos Pendentes</SubTitle>    

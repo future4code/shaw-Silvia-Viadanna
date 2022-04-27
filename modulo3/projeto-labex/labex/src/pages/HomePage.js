@@ -3,6 +3,7 @@ import axios from "axios";
 // import {Body,Header,Botao,Container,Title} from "./Style"
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { goToLogin,goToListTripsPage } from "../routes/coordinator";
 
 const Body=styled.body`  
     color: #000;
@@ -51,23 +52,15 @@ const Botao = styled.button`
 export const HomePage  = () => {
   const navigate=useNavigate()
 
-  const goToListTripsPage=()=>{
-navigate("/listaViagens")
-  }
-  // const goToAdminHomePage=()=>{    ENQUANTO NÃO SEI FAZER LOGIN
-  //   navigate("/login")
-  //     }
-  
-      const goToLogin=()=>{
-        navigate("/paginaAdmin")
-          }
+ 
+    
     return (
 
       <Body>
       <Container>
        <Header><Title>LabeX </Title></Header>
-       <Botao onClick={goToListTripsPage}>Ver Viagens</Botao>
-       <Botao onClick={goToLogin}>Area Administração</Botao>
+       <Botao onClick={()=>goToListTripsPage(navigate)}>Ver Viagens</Botao>
+       <Botao onClick={()=>goToLogin(navigate)}>Area Administração</Botao>
        
        </Container>
        </Body>
