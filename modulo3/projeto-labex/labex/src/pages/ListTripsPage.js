@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { goBack,goToApplicationFormPage } from "../routes/coordinator";
 
 const Body=styled.body`  
@@ -52,38 +52,43 @@ const Botao = styled.button`
 const aluno="shaw-Silvia-Viadanna"
 export const ListTripsPage  = () => {
   const navigate=useNavigate()
-  const [listTrip, setListTrip] = useState([]);
+  const [trips, setTrips] = useState([]);
 
 
   useEffect(() => {
-    axios
-      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/:${aluno}/trips`)
-      .then((res) => {
-        setListTrip(res.data.results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getTrips()
   }, []);
 
-  
-  const listTrips=listTrip.map((list) => {
+  const getTrips= () =>{
+    axios
+      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
+      .then(res => {
+        console.log(res.data.trips)
+        setTrips(res.data.trips);
+      })
+      .catch((err) => {
+        console.log(err.data);
+      });
+    }
+
+  const listaTrips=trips.map((list) => {
 return(
 <div key={list.id}>
 
-Nome:{list.name}<p></p>
-Descrição:{list.description}<p></p>
-Planeta: {list.planet}<p></p>
-Duração: {list.durationInDays}<p></p>
-Data: {list.date}
+<p>Nome:{list.name}</p>
+<p>Descrição:{list.description}</p>
+<p>Planeta: {list.planet}</p>
+<p>Duração: {list.durationInDays}</p>
+<p>Data: {list.date}</p>
+
+<p>====================================================</p>
+<p></p>
 </div>
-
-
 )
 }
   )
     return (
-      <Body>
+    <body>
       <Container>
        <Header><Title>LabeX </Title> </Header>
        <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
@@ -91,8 +96,10 @@ Data: {list.date}
       
        </Container>
        <SubTitle>Viagens Disponíveis:</SubTitle>    
-       {listTrips}
-      </Body>
+       {listaTrips}
+
+       Cadastrar:
+     </body>
     )
   };
   

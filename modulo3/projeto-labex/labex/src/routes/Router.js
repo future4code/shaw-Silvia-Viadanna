@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
 import {HomePage} from "../pages/HomePage";
 import {ListTripsPage} from "../pages/ListTripsPage";
 import {ApplicationFormPage} from "../pages/ApplicationFormPage";

@@ -70,7 +70,7 @@ export const CreateTripPage = () => {
   
   
     return (
-      <Body>
+      <div>
       <Container>
        <Header><Title>LabeX </Title> </Header>
        </Container>
@@ -91,7 +91,7 @@ export const CreateTripPage = () => {
        <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
        <Botao>CRIAR</Botao> 
-      </Body>
+    </div>
     );
   };
   

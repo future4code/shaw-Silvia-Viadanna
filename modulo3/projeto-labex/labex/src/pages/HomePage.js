@@ -56,14 +56,15 @@ export const HomePage  = () => {
     
     return (
 
-      <Body>
+      <div>
+     
       <Container>
        <Header><Title>LabeX </Title></Header>
        <Botao onClick={()=>goToListTripsPage(navigate)}>Ver Viagens</Botao>
        <Botao onClick={()=>goToLogin(navigate)}>Area Administração</Botao>
        
        </Container>
-       </Body>
+      </div>
     );
   };
   

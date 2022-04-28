@@ -63,40 +63,140 @@ const Select = styled.select`
     padding: 5px;
     width:400px;
 `;
+const aluno="shaw-Silvia-Viadanna"
+
 export const ApplicationFormPage = () => {
   const navigate=useNavigate()
+  const [trips, setTrips] = useState([]);
+  const [valueSelect, setValueSelect] = useState("");
+  const [valueName, setValueName] = useState("");
+  const [valueAge, setValueAge] = useState(0);
+  const [valueApplicationText, setValueApplicationText] = useState("");
+  const [valueProfession, setValueProfession] = useState("");
+  const [valueCountry, setValueCountry] = useState("");
+  const [id,setId]=useState("")
 
-   
+
   
+
+
+  useEffect(() => {
+    getTrips()
+  }, []);
+
+  const getTrips= () =>{
+    axios
+      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
+      .then(res => {
+        setTrips(res.data.trips);
+        console.log( 'res====92',res.data.trips)
+
+      })
+      .catch((err) => {
+        console.log(err.data);
+      });
+    }
+
+  const selectOptions=trips.map((list) => {
+return(
+<div key={list.id}>
+
+<p>Nome:{list.name}</p>
+   </div>
+)
+  }
+  )
+
+  const handleSelectTrip = (event) => {
+    setValueSelect(event.target.value);
+    
+  };
+
+  const handleNameInput = (event) => {
+    setValueName(event.target.value);
+  };
+  const handleAgeInput = (event) => {
+    setValueAge(event.target.value);
+  };
+  const handleApplicationTextInput = (event) => {
+    setValueApplicationText(event.target.value);
+  };
+  const handleProfessionInput = (event) => {
+    setValueProfession(event.target.value);
+  };
+  const handleSelectCountry = (event) => {
+    setValueCountry(event.target.value);
+  };
+
+
+
+  useEffect(() => {
+    onSubmitApplyToTrips()
+  }, {});
+
+  const onSubmitApplyToTrips= () =>{
+    console.log("VALUE",valueSelect)
+    const body ={
+      name: valueName,
+      age: valueAge,
+      applicationText: valueApplicationText,
+      profession: valueProfession,
+      country: valueCountry,
+  }                                                                                    //3lwRu5F9SPnylZqILDvQ
+    axios                                                                                //   ${valueSelect}
+      .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips/3lwRu5F9SPnylZqILDvQ/apply`,body)
+      
+      .then(response => {
+        console.log("OK",response.data)
+         .then((res) => alert ("Viajante incluído com sucesso ")
+        //setValueSelect(res.data.valueSelect),
+        //                 setValueName(res.data.valueName),
+        //                 setValueName(res.data.valueAge),
+        //                 setValueApplicationText(res.data.valueApplicationText),
+        //                 setValueProfession(res.data.valueProfession),
+        //                 setValueCountry(res.data.valueCountry)
+                        )
+      })
+      .catch((err) => {
+        console.log("ERR===" ,err.data)
+      })
+     }
+
+    
+
+    
     return (
       <Body>
+
       <Container>
        <Header><Title>LabeX </Title> </Header>
        </Container>
        <SubTitle>Escolha sua Viagem</SubTitle> 
-       <Select >
-         <option>Escolha uma Viagem</option>
-         <option>1</option>
-         <option>2</option>
-         <option>3</option>
-
+       <Select name='valueSelect' onChange={handleSelectTrip} value={valueSelect}>
+         <option value="" disabled>Escolha uma Viagem</option>
+         {selectOptions} 
          </Select><p></p>
-       <Input placeholder="Nome"></Input><p></p>
-       <Input placeholder="Idade"></Input><p></p>
-       <Input placeholder="Texto de Candidatura"></Input><p></p>
-       <Input placeholder="Profissão"></Input><p></p>
-       <Select >
-         <option>Escolha um País</option>
-         <option>1</option>
-         <option>2</option>
-         <option>3</option>
+       <Input placeholder='Nome' type='text' onChange={handleNameInput} value={valueName}/><p></p>
+       <Input placeholder='Idade' type='number' onChange={handleAgeInput} value={valueAge}/><p></p>
 
-         </Select><p></p>
+       <Input placeholder="Texto de Candidatura" type='text' onChange={handleApplicationTextInput} value={valueApplicationText}/>
+<p></p>
+       <Input placeholder="Profissão"type='text' onChange={handleProfessionInput} value={valueProfession}/><p></p><p></p>
+       <Select name='country'onChange={handleSelectCountry} value={valueCountry}>
+       <option value="Brasil" selected="selected">Brasil</option>
+	<option value="Afeganistão">Afeganistão</option>
+	<option value="África do Sul">África do Sul</option>
+	<option value="Albânia">Albânia</option>
+	<option value="Alemanha">Alemanha</option>
+
+  </Select>
 <p></p>
 <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
-       <Botao>CONFIRMAR</Botao> 
-      </Body>
+       
+<Botao onClick={onSubmitApplyToTrips}>Me Interessei!</Botao>
+
+       </Body>
     );
   };
   

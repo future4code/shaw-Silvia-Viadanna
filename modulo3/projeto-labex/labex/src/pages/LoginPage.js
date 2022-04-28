@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { goBack,goToLogin } from "../routes/coordinator";
 
+
 const Body=styled.body`  
     color: #000;
     font-family: Arial, Serif;
@@ -64,25 +65,56 @@ const Select = styled.select`
     width:400px;
 `;
 
+const aluno="shaw-Silvia-Viadanna"
+
 export const LoginPage = () => {
   const navigate=useNavigate()
+const [email,setEmail] = useState("")
+const [password,setPassword] = useState("")
 
+const onChangeEmail=(event)=>{
+ setEmail(event.target.value)
+}
  
+const onChangePassword=(event)=>{
+  setPassword(event.target.value)
+ }
+
+
+ const onSubmitLogin = () => {
+console.log(email,password)
+
+ const body={
+  email:email,
+  password:password,
+}
+
+axios
+.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/login`,body)
+.then(response => {
+  console.log("OK",response.data)
+  window.localStorage.setItem("token",response.data.token)
+   }
+   )
   
+  .catch((err) => {
+    console.log("ERR===" ,err.data)
+  })
+ }
       
   return (
-  <Body>
+  <div>
   <Container>
    <Header><Title>LabeX </Title> </Header>
    </Container>
    <SubTitle>Login</SubTitle> 
-   <Input placeholder="e-mail"></Input><p></p>
-   <Input type="password" placeholder="Senha"></Input><p></p>
+   <Input placeholder="e-mail" type="email" value={email} onChange={onChangeEmail} required/><p></p>
+   <Input type="password" placeholder="Senha" value={password} onChange={onChangePassword} required/><p></p>
   
    <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
-   <Botao onClick={()=>goToLogin(navigate)}>Entrar</Botao>
-  </Body>
+   <Botao onClick={onSubmitLogin}>Entrar</Botao>
+  </div>
     );
 }
   

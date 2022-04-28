@@ -64,21 +64,72 @@ const Select = styled.select`
 `;
 
 
+const aluno="shaw-Silvia-Viadanna"
 
 
 export const TripDetailsPage = () => {
   const navigate=useNavigate()
+  const [trips, setTrips] = useState([]);
 
+  useEffect(() => {
+    getTrips()
+  }, []);
+
+  const getTrips= () =>{
+    axios
+      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
+      .then(res => {
+        console.log(res.data.trips)
+        setTrips(res.data.trips);
+      })
+      .catch((err) => {
+        console.log(err.data);
+      });
+    }
+
+ 
+
+
+
+  useEffect(()=>{
+                                                                        //3lwRu5F9SPnylZqILDvQ
+                                                                        //   ${valueSelect}
+axios                                                      
+.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/:${aluno}/trip/:3lwRu5F9SPnylZqILDvQ`
+, {
+  headers:{
+    auth:`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRtU…0NDJ9.YiA3kfz16Q-51xGDzp2BSSilysh3jrbN_zRwsuMqSF0`
+  }
+}
+)
+.then(res => {
+  console.log("OK", res.data.trips)
+})
+.catch((err) => {
+  console.log("ERRO", err.data);
+});
+},[])
+
+
+const listaTrips=trips.map((list) => {
+  return(
+  <div key={list.id}>
+  
+  <p>Nome:{list.name}</p>
+  
+  <p>====================================================</p>
+  <p></p>
+  </div>
+  )
+  }
+    )
    
     return (
       <Body>
       <Container>
        <Header><Title>LabeX </Title></Header>
-       Nome:<p></p>
-       Descrição:<p></p>
-       Planeta: <p></p>
-       Duração: <p></p>
-       Data: <p></p>
+       <SubTitle>Viagens Disponíveis:</SubTitle>    
+       {listaTrips}
 
        <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
        </Container>

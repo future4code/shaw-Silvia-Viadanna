@@ -66,7 +66,7 @@ export const AdminHomePage = () => {
     
     return (
       
-      <Body>
+      <div>
       <Container>
        <Header><Title>LabeX </Title> </Header>
          
@@ -82,7 +82,7 @@ export const AdminHomePage = () => {
  <BotaoListaViagens>Marte <Botao>X</Botao></BotaoListaViagens>
  <BotaoListaViagens>Lua<Botao>X</Botao></BotaoListaViagens>
  <BotaoListaViagens>Via Láctea<Botao>X</Botao></BotaoListaViagens>
-      </Body>
+      </div>
 
     );
   };
