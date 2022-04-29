@@ -74,39 +74,13 @@ export const ApplicationFormPage = () => {
   const [valueApplicationText, setValueApplicationText] = useState("");
   const [valueProfession, setValueProfession] = useState("");
   const [valueCountry, setValueCountry] = useState("");
-  const [id,setId]=useState("")
-
-
-  
+  const [id,setId]=useState()
 
 
   useEffect(() => {
     getTrips()
   }, []);
-
-  const getTrips= () =>{
-    axios
-      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
-      .then(res => {
-        setTrips(res.data.trips);
-        console.log( 'res====92',res.data.trips)
-
-      })
-      .catch((err) => {
-        console.log(err.data);
-      });
-    }
-
-  const selectOptions=trips.map((list) => {
-return(
-<div key={list.id}>
-
-<p>Nome:{list.name}</p>
-   </div>
-)
-  }
-  )
-
+ 
   const handleSelectTrip = (event) => {
     setValueSelect(event.target.value);
     
@@ -127,7 +101,9 @@ return(
   const handleSelectCountry = (event) => {
     setValueCountry(event.target.value);
   };
-
+  const handleSelectId = (event) => {
+    setId(event.target.value);
+  };
 
 
   useEffect(() => {
@@ -142,27 +118,48 @@ return(
       applicationText: valueApplicationText,
       profession: valueProfession,
       country: valueCountry,
-  }                                                                                    //3lwRu5F9SPnylZqILDvQ
-    axios                                                                                //   ${valueSelect}
-      .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips/3lwRu5F9SPnylZqILDvQ/apply`,body)
+      
+  }                                                                                    
+    axios   
+    
+      .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips/:${id}/apply`,body)
       
       .then(response => {
         console.log("OK",response.data)
-         .then((res) => alert ("Viajante incluído com sucesso ")
-        //setValueSelect(res.data.valueSelect),
-        //                 setValueName(res.data.valueName),
-        //                 setValueName(res.data.valueAge),
-        //                 setValueApplicationText(res.data.valueApplicationText),
-        //                 setValueProfession(res.data.valueProfession),
-        //                 setValueCountry(res.data.valueCountry)
-                        )
-      })
+         alert ("Viajante incluído com sucesso ")
+                    
+      }
+      )
       .catch((err) => {
         console.log("ERR===" ,err.data)
       })
      }
 
     
+  
+    const getTrips= () =>{
+      axios
+        .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
+        .then(res => {
+          setTrips(res.data.trips);
+          console.log( 'res==',res.data.trips)
+  
+        })
+        .catch((err) => {
+          console.log(err.data);
+        });
+      }
+  
+    const selectOptions=trips.map((list) => {
+  return(
+  <option onChange={handleSelectId} value={list.id}>
+  
+  <p>{list.name}</p>
+     </option>
+  )
+    }
+    )
+  
 
     
     return (
@@ -173,7 +170,7 @@ return(
        </Container>
        <SubTitle>Escolha sua Viagem</SubTitle> 
        <Select name='valueSelect' onChange={handleSelectTrip} value={valueSelect}>
-         <option value="" disabled>Escolha uma Viagem</option>
+         <option value="" >Escolha uma Viagem</option>
          {selectOptions} 
          </Select><p></p>
        <Input placeholder='Nome' type='text' onChange={handleNameInput} value={valueName}/><p></p>
@@ -183,7 +180,8 @@ return(
 <p></p>
        <Input placeholder="Profissão"type='text' onChange={handleProfessionInput} value={valueProfession}/><p></p><p></p>
        <Select name='country'onChange={handleSelectCountry} value={valueCountry}>
-       <option value="Brasil" selected="selected">Brasil</option>
+       <option >Selecione um país</option>
+       <option value="Brasil" >Brasil</option>
 	<option value="Afeganistão">Afeganistão</option>
 	<option value="África do Sul">África do Sul</option>
 	<option value="Albânia">Albânia</option>

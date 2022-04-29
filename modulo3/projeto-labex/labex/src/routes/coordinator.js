@@ -1,10 +1,9 @@
 export const goBack=(navigate)=>{
     navigate(-1)
       } 
-      
-      // enquanto não crio login
-export const goToLogin=(navigate)=>{
-        navigate("/paginaAdmin")
+     
+ export const goToLogin=(navigate)=>{
+        navigate("/login")
           }
 
 export const goToApplicationFormPage=(navigate)=>{
@@ -16,5 +15,12 @@ export const goToListTripsPage=(navigate)=>{
 }
 export const goToCreateTripPage=(navigate)=>{
     navigate("/criarViagem")
+  }
+
+  export const goToAdminHomePage=(navigate)=>{
+    navigate("/paginaAdmin")
+  }
+  export const goToTripDetailPage=(navigate)=>{
+    navigate("/detalhePagina")
   }
  

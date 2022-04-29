@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { goBack,goToApplicationFormPage } from "../routes/coordinator";
 
 const Body=styled.body`  
@@ -50,6 +50,7 @@ const Botao = styled.button`
 `;
 
 const aluno="shaw-Silvia-Viadanna"
+
 export const ListTripsPage  = () => {
   const navigate=useNavigate()
   const [trips, setTrips] = useState([]);
@@ -63,8 +64,9 @@ export const ListTripsPage  = () => {
     axios
       .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
       .then(res => {
-        console.log(res.data.trips)
         setTrips(res.data.trips);
+        console.log( 'res==',res.data.trips)
+
       })
       .catch((err) => {
         console.log(err.data);
@@ -101,6 +103,6 @@ return(
        Cadastrar:
      </body>
     )
-  };
+  }
   
   

@@ -79,9 +79,7 @@ export const AdminHomePage = () => {
 
        <Botao onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem!</Botao> 
        <Botao onClick={()=>goBack(navigate)}>Logout</Botao>  
- <BotaoListaViagens>Marte <Botao>X</Botao></BotaoListaViagens>
- <BotaoListaViagens>Lua<Botao>X</Botao></BotaoListaViagens>
- <BotaoListaViagens>Via Láctea<Botao>X</Botao></BotaoListaViagens>
+ 
       </div>
 
     );

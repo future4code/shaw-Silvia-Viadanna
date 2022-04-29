@@ -94,11 +94,12 @@ axios
 .then(response => {
   console.log("OK",response.data)
   window.localStorage.setItem("token",response.data.token)
+  navigate("/detalheViagem")
    }
    )
   
   .catch((err) => {
-    console.log("ERR===" ,err.data)
+    console.log("ERR===" ,err.response.data)
   })
  }
       
