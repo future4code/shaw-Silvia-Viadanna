@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import { goBack } from "../routes/coordinator";
 
 const Body=styled.body`  
@@ -64,19 +64,17 @@ const Select = styled.select`
     width:400px;
 `;
 
-const CardTrip=styled.div`
-  display:flex;
+
+const CardDetailTrip=styled.div`
+ 
   border:1px solid black;
     border-radius: 10px;
-  padding:4px;
+  padding:30px;
   margin:4px;
   width:400px;
   justify-content:space-between;
-  background-color:#fdfac7;
-  &:hover{
-      cursor:pointer;
-      background-color: #fbea80;
-  }
+  background-color:#b5f83f;
+  
 `
 
 const aluno="shaw-Silvia-Viadanna"
@@ -86,8 +84,8 @@ const useProtectedPage=()=>{
     useEffect(() =>{
   
       const token=localStorage.getItem("token")
-      console.log("Logado:",token)
-
+     
+     
       if(token===null) {
         console.log("Não está logado")
         navigate("/login")
@@ -96,31 +94,18 @@ const useProtectedPage=()=>{
     }
 export const TripDetailsPage  = () => {
   useProtectedPage()
-  const token=localStorage.getItem(token)
+  const token=localStorage.getItem("token")
+ 
   const navigate=useNavigate()
-  const [trips, setTrips] = useState([]);
-  const [id,setId]=useState()
-  const [valueSelect, setValueSelect] = useState("");
-  const [tripsDetail, setTripsDetail] = useState([]);
+  const [tripsDetail, setTripsDetail] = useState({});
+ 
+
+ const{id}=useParams()
+
   
-  useEffect(() => {
-    getTrips()
-  }, []);
 
-  useEffect(() => {
-    getTripsDetail()
-  }, []);
-
-  const handleSelectTrip = (event) => {
-    setValueSelect(event.target.value);
-    console.log("TRIP===",event.target.value)
-  };
-  const handleSelectId = (event) => {
-    setId(event.target.value);
-    console.log("ID===",event.target.value)
-  };
-  const getTripsDetail= () =>{
-     console.log("LOgado")
+  const getTripsDetail= (id) =>{
+  
     axios
       .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trip/${id}`,{
        headers: {
@@ -128,157 +113,37 @@ export const TripDetailsPage  = () => {
        }
       })
       .then(response => {
-        setTripsDetail(response.data.tripsDetail);
-        console.log(" DETALH+++",response.data.tripsDetail)
-       })
+       setTripsDetail(response.data.trip);
+      })
       .catch((err) => {
         console.log("ERRO ID", err.response.data);
         });
     }
-    const listaTrips=tripsDetail.map((listDetail) => {
-      return(
-      <div key={listDetail.id}>
-            <p>Planeta: {listDetail.planet}</p>
-            <p>Duração: {listDetail.durationInDays}</p>
-            <p>Data: {listDetail.date}</p>
-            <p>Nome:{listDetail.name}</p>
-            <p>Descrição:{listDetail.description}</p>
-            <p>Candidatos:{listDetail.candidates}</p>
-
-
-      
-      <p>====================================================</p>
-      <p></p>
-      
-      </div>
-      )
-      }
-        )
-        console.log("LISTA====",listaTrips)
-  const getTrips= () =>{
-    axios
-      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
-      .then(res => {
-        setTrips(res.data.trips);
-        console.log( 'res==',res.data.trips)
-     })
-      .catch((err) => {
-        console.log(err.data);
-      });
-    }
-    const selectOptions=trips.map((list) => {
-      return(
-  <CardTrip> <option onClick={handleSelectId} value={list.id}>
-   <p>{list.name}</p>
-     </option></CardTrip>
-)
-}  )
+   
+    useEffect(() => {
+      getTripsDetail(id)
+    }, [id]);
+  
     return (
     <body>
       <Container>
        <Header><Title>LabeX </Title> </Header>
        <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
        </Container>
-       <SubTitle>Viagens Disponíveis:</SubTitle>    
-       <div name='valueSelect' onClick={handleSelectTrip} value={valueSelect}>
-         <option value="" >Escolha uma Viagem</option>
-         {selectOptions} <p></p>
-         {listaTrips}
-         </div><p></p>
+         <CardDetailTrip>
+        id={id}<p></p>
+    
+       Planeta: {tripsDetail.planet}<p></p>
+       Data: {tripsDetail.date}<p></p>
+       Duração: {tripsDetail.durationInDays}<p></p>
+      Nome: {tripsDetail.name}<p></p>
+      Descrição: {tripsDetail.description}<p></p>
+      Candidatos: tripsDetail.candidates[{}]        ??????????<p></p>
+      {/* Candidatos: /*"{tripsDetail.candidates[{}]}"}<p></p> */}
+
+      </CardDetailTrip>
+
      </body>
     )
   }
-  
-
-
-
-
-
-
-
-// export const TripDetailsPage = () => {
-//   const navigate=useNavigate()
-//   const [trips, setTrips] = useState([]);
-//   const [id,setId]=useState()
-
-//   // useProtectedPage()
-
-//   useEffect(() => {
-//     getTrips()
-//   }, []);
-
-
-
-  // const handleSelectId = (event) => {
-  //   setId(event.target.value);
-  // };
-
-//   useEffect(() =>{
-
-//     const token=localStorage.getItem("token")
-// console.log("LOgado")
-    
-
-  // useEffect(() => {
-  //   getTripsDetail()
-  // }, []);
-
-  // const getTripsDetail= () =>{
-  //   axios
-  //     .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/:${aluno}/trip/:${id}`)
-  //     .then(res => {
-  //       console.log(res.data.trips)
-  //       setTrips(res.data.trips);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.data);
-  //     });
-  //   }
-
-  // })
-//   const getTrips= () =>{                                                                      //3lwRu5F9SPnylZqILDvQ
-                                               
-// axios                                                      
-// .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/:${aluno}/trips`)
-// .then(res => {
-//   setTrips(res.data.trips);
-//   console.log( 'res==',res.data.trips)
-// })
-// .catch((err) => {
-//   console.log("ERRO", err.data);
-// });
-//   }
-
-// const listaTrips=trips.map((list) => {
-//   return(
-//   <div key={list.id}>
-  
-//   <p>Nome:{list.name}</p>
- 
-  
-//   <p></p>
-//   </div>
-//   )
-//     }
-//     )  
-    
-  
-
-//     return (
-//       <Body>
-//       <Container>
-//        <Header><Title>LabeX </Title> </Header>
-//        <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
-      
-//        </Container>
-//        <SubTitle>Viagens Disponíveis:</SubTitle>    
-//        {listaTrips}
-
-      
-//      </Body>
-      
-//     );
-    
-//     }
-  
   

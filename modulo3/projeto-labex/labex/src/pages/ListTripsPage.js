@@ -49,6 +49,18 @@ const Botao = styled.button`
     color:white;
 `;
 
+const CardDetailTrip=styled.div`
+ 
+  border:1px solid black;
+    border-radius: 10px;
+  padding:30px;
+  margin:4px;
+  width:400px;
+  justify-content:space-between;
+  background-color:#b5f83f;
+  
+`
+
 const aluno="shaw-Silvia-Viadanna"
 
 export const ListTripsPage  = () => {
@@ -76,15 +88,14 @@ export const ListTripsPage  = () => {
   const listaTrips=trips.map((list) => {
 return(
 <div key={list.id}>
-
+<CardDetailTrip> 
 <p>Nome:{list.name}</p>
 <p>Descrição:{list.description}</p>
 <p>Planeta: {list.planet}</p>
 <p>Duração: {list.durationInDays}</p>
 <p>Data: {list.date}</p>
+</CardDetailTrip> 
 
-<p>====================================================</p>
-<p></p>
 </div>
 )
 }
@@ -97,9 +108,10 @@ return(
        <Botao onClick={()=>goToApplicationFormPage(navigate)}>Quero me inscrever!</Botao>
       
        </Container>
-       <SubTitle>Viagens Disponíveis:</SubTitle>    
+       <SubTitle>Viagens Disponíveis:</SubTitle>  
+       
        {listaTrips}
-
+      
        Cadastrar:
      </body>
     )

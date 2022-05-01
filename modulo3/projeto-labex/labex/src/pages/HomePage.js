@@ -3,7 +3,7 @@ import axios from "axios";
 // import {Body,Header,Botao,Container,Title} from "./Style"
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { goToLogin,goToListTripsPage } from "../routes/coordinator";
+import { goToLogin,goToListTripsPage} from "../routes/coordinator";
 
 const Body=styled.body`  
     color: #000;

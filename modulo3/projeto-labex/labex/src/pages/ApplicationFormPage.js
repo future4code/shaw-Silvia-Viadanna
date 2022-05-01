@@ -51,7 +51,7 @@ const Botao = styled.button`
 const Input = styled.input`
     border-radius: 10px;
     border: 0px solid ;
-    background-color:#d6ce8b;
+   
     padding: 5px;
     width:400px;
 `;
@@ -59,10 +59,20 @@ const Input = styled.input`
 const Select = styled.select`
     border-radius: 10px;
     border: 0px solid ;
-    background-color:#d6ce8b;
+  
     padding: 5px;
     width:400px;
 `;
+
+const CardInscrTrip=styled.div`
+  border:1px solid black;
+  border-radius: 10px;
+  padding:30px;
+  margin:4px;
+  width:400px;
+  justify-content:space-between;
+  background-color:#b5f83f;
+  `
 const aluno="shaw-Silvia-Viadanna"
 
 export const ApplicationFormPage = () => {
@@ -70,7 +80,7 @@ export const ApplicationFormPage = () => {
   const [trips, setTrips] = useState([]);
   const [valueSelect, setValueSelect] = useState("");
   const [valueName, setValueName] = useState("");
-  const [valueAge, setValueAge] = useState(0);
+  const [valueAge, setValueAge] = useState();
   const [valueApplicationText, setValueApplicationText] = useState("");
   const [valueProfession, setValueProfession] = useState("");
   const [valueCountry, setValueCountry] = useState("");
@@ -80,12 +90,9 @@ export const ApplicationFormPage = () => {
   useEffect(() => {
     getTrips()
   }, []);
- 
   const handleSelectTrip = (event) => {
     setValueSelect(event.target.value);
-    
   };
-
   const handleNameInput = (event) => {
     setValueName(event.target.value);
   };
@@ -111,8 +118,7 @@ export const ApplicationFormPage = () => {
   }, {});
 
   const onSubmitApplyToTrips= () =>{
-    console.log("VALUE",valueSelect)
-    const body ={
+      const body ={
       name: valueName,
       age: valueAge,
       applicationText: valueApplicationText,
@@ -125,25 +131,16 @@ export const ApplicationFormPage = () => {
       .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips/:${id}/apply`,body)
       
       .then(response => {
-        console.log("OK",response.data)
-         alert ("Viajante incluído com sucesso ")
-                    
-      }
-      )
+       alert ("Viajante incluído com sucesso ")
+      })
       .catch((err) => {
-        console.log("ERR===" ,err.data)
       })
      }
-
-    
-  
-    const getTrips= () =>{
+     const getTrips= () =>{
       axios
         .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
         .then(res => {
           setTrips(res.data.trips);
-          console.log( 'res==',res.data.trips)
-  
         })
         .catch((err) => {
           console.log(err.data);
@@ -169,6 +166,7 @@ export const ApplicationFormPage = () => {
        <Header><Title>LabeX </Title> </Header>
        </Container>
        <SubTitle>Escolha sua Viagem</SubTitle> 
+       <CardInscrTrip>
        <Select name='valueSelect' onChange={handleSelectTrip} value={valueSelect}>
          <option value="" >Escolha uma Viagem</option>
          {selectOptions} 
@@ -188,7 +186,7 @@ export const ApplicationFormPage = () => {
 	<option value="Alemanha">Alemanha</option>
 
   </Select>
-<p></p>
+  </CardInscrTrip>
 <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
        

@@ -61,28 +61,99 @@ const BotaoListaViagens=styled.button`
       background-color: #dffda7;
   }
 `
-export const AdminHomePage = () => {
-  const navigate=useNavigate()
-    
-    return (
+;
+
+const CardTrip=styled.div`
+  display:flex;
+  border:1px solid black;
+    border-radius: 10px;
+  padding:4px;
+  margin:4px;
+  width:400px;
+  justify-content:space-between;
+  background-color:#b5f83f;
+  &:hover{
+      cursor:pointer;
+      background-color: green;
+  }
+`
+
+const aluno="shaw-Silvia-Viadanna"
+
+  const useProtectedPage=()=>{
+    const navigate=useNavigate()
+    useEffect(() =>{
+  
+      const token=localStorage.getItem("token")
+      console.log("Logado:",token)
       
+
+      if(token===null) {
+        console.log("Não está logado")
+        navigate("/login")
+      }
+        },[])
+    }
+export const AdminHomePage = () => {
+  useProtectedPage()
+  
+  const token=localStorage.getItem(token)
+  const navigate=useNavigate()
+  const [trips, setTrips] = useState([]);
+  const [id,setId]=useState()
+  const [valueSelect, setValueSelect] = useState("");
+  const [tripsDetail, setTripsDetail] = useState([]);
+  
+  useEffect(() => {
+    getTrips()
+  }, []);
+
+  const handleSelectTrip = (event) => {
+    setValueSelect(event.target.value);
+    console.log("TRIP===",event.target.value)
+  };
+  const handleSelectId = (event) => {
+    setId(event.target.value);
+    console.log("ID===",event.target.value)
+    navigate(`/detalheViagem/${event.target.value}`)
+  };
+    
+  const getTrips= () =>{
+    axios
+      .get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/${aluno}/trips`)
+      .then(res => {
+        setTrips(res.data.trips);
+        console.log( 'res==',res.data.trips)
+     })
+      .catch((err) => {
+        console.log(err.data);
+      });
+    }
+    const selectOptions=trips.map((list) => {
+      return(
+  <CardTrip> <option onClick={handleSelectId} value={list.id}>
+   <p>{list.name}</p>
+     </option></CardTrip>
+)
+}  )
+    return (
       <div>
       <Container>
        <Header><Title>LabeX </Title> </Header>
          
        <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
-       <Botao>Quero me inscrever!</Botao>
-      
-       </Container>
-       <SubTitle>Painel Administrativo</SubTitle>  
-       <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
-
-       <Botao onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem!</Botao> 
-       <Botao onClick={()=>goBack(navigate)}>Logout</Botao>  
- 
-      </div>
-
-    );
-  };
+       <Botao onClick={()=>goToCreateTripPage(navigate)}>Criar Viagem</Botao>
+</Container>
+       <SubTitle>Viagens Disponíveis:</SubTitle>    
+       <div name='valueSelect' onClick={handleSelectTrip} value={valueSelect}>
+         <option value="" >Escolha uma Viagem</option>
+         {selectOptions} <p></p>
+         
+         </div><p></p>
+     </div>
+    )
+  }
+  
+    
   
   

@@ -52,19 +52,22 @@ const Botao = styled.button`
 const Input = styled.input`
     border-radius: 10px;
     border: 0px solid ;
-    background-color:#d6ce8b;
     padding: 5px;
     width:400px;
 `;
 
-const Select = styled.select`
-    border-radius: 10px;
-    border: 0px solid ;
-    background-color:#d6ce8b;
-    padding: 5px;
-    width:400px;
-`;
 
+
+const CardLogin=styled.div`
+  border:1px solid black;
+  border-radius: 10px;
+  padding:30px;
+  margin:4px;
+  width:400px;
+  justify-content:space-between;
+  background-color:#b5f83f;
+  
+`
 const aluno="shaw-Silvia-Viadanna"
 
 export const LoginPage = () => {
@@ -94,7 +97,7 @@ axios
 .then(response => {
   console.log("OK",response.data)
   window.localStorage.setItem("token",response.data.token)
-  navigate("/detalheViagem")
+  navigate("/paginaAdmin")
    }
    )
   
@@ -109,9 +112,10 @@ axios
    <Header><Title>LabeX </Title> </Header>
    </Container>
    <SubTitle>Login</SubTitle> 
+   <CardLogin>
    <Input placeholder="e-mail" type="email" value={email} onChange={onChangeEmail} required/><p></p>
    <Input type="password" placeholder="Senha" value={password} onChange={onChangePassword} required/><p></p>
-  
+   </CardLogin>
    <Botao onClick={()=>goBack(navigate)}>Voltar</Botao>
 
    <Botao onClick={onSubmitLogin}>Entrar</Botao>

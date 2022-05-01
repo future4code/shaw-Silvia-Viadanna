@@ -21,7 +21,7 @@ export const Router=()=>{
       <Route path="incricaoViagem" element={<ApplicationFormPage/>}/>
       <Route path="paginaAdmin" element={<AdminHomePage/>}/>
       <Route path="criarViagem" element={<CreateTripPage/>}/>
-      <Route path="detalheViagem" element={<TripDetailsPage/>}/>
+      <Route path="detalheViagem/:id" element={<TripDetailsPage/>}/>
       <Route path="login" element={<LoginPage/>}/>
      </Routes>
      </BrowserRouter>
